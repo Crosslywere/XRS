@@ -8,6 +8,8 @@ int main(void)
   glfwMakeContextCurrent(window);
   auto renderer = xrs::Renderer::Initialize(true, (xrs::Renderer::GLLoaderFunc)glfwGetProcAddress);
   while (!glfwWindowShouldClose(window)) {
+    renderer.Begin();
+    renderer.End();
     glfwPollEvents();
     glfwSwapBuffers(window);
   }
