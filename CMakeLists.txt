@@ -12,9 +12,18 @@ target_include_directories(xrs PRIVATE
     deps/glad/include
 )
 
+#GLFW subdirectory
+add_subdirectory(test/vendor/glfw)
+#Testing
 add_executable(xrs_test test/test.cpp)
-target_link_libraries(xrs_test PRIVATE xrs)
-target_include_directories(xrs_test PRIVATE include)
+target_link_libraries(xrs_test PRIVATE
+    xrs
+    glfw
+)
+target_include_directories(xrs_test PRIVATE
+    include
+    test/vendor/glfw/include
+)
 enable_testing()
 add_test(NAME xrs_test COMMAND xrs_test)
 
