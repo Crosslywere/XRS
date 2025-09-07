@@ -4,6 +4,7 @@ project(xrs VERSION 0.0)
 
 add_library(xrs STATIC
     src/Renderer.cpp
+    src/Framebuffer.cpp
     deps/glad/src/glad.c
 )
 
