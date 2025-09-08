@@ -1,5 +1,5 @@
-#include "xrs/Renderer.hpp"
 #include <glad/glad.h>
+#include "xrs/Renderer.hpp"
 #include <cstdio>
 #include <cassert>
 
@@ -19,7 +19,7 @@ namespace xrs
   void Renderer::Begin() const
   {
     // TODO Bind framebuffer if one is available
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
   }
 
   void Renderer::End() const

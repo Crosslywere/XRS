@@ -1,9 +1,10 @@
 #pragma once
 
 #ifndef _RENDERER_HPP_
-#define _RENDERER_HPP_
+#define _XRS_RENDERER_HPP_
 
 #include "Framebuffer.hpp"
+#include "Texture.hpp"
 
 namespace xrs
 {
@@ -52,4 +53,4 @@ namespace xrs
 
 } // namespace xrs
 
-#endif // _RENDERER_HPP_
+#endif // _XRS_RENDERER_HPP_

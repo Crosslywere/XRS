@@ -5,12 +5,15 @@ project(xrs VERSION 0.0)
 add_library(xrs STATIC
     src/Renderer.cpp
     src/Framebuffer.cpp
+    src/Texture.cpp
     deps/glad/src/glad.c
+    deps/stb/stb_impl.cpp
 )
 
 target_include_directories(xrs PRIVATE
     include
     deps/glad/include
+    deps/stb
 )
 
 #GLFW subdirectory
