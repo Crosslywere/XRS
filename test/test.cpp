@@ -7,7 +7,8 @@ int main(void)
   auto window = glfwCreateWindow(800, 600, "Testing Window", 0, 0);
   glfwMakeContextCurrent(window);
   auto renderer = xrs::Renderer::Initialize(true, (xrs::Renderer::GLLoaderFunc)glfwGetProcAddress);
-  while (!glfwWindowShouldClose(window)) {
+  while (!glfwWindowShouldClose(window))
+  {
     renderer.Begin();
     renderer.End();
     glfwPollEvents();
