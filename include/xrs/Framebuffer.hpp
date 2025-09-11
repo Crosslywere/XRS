@@ -37,9 +37,6 @@ namespace xrs
      * @param bufferConfigFlags specifies the buffers/textures to create
      */
     Framebuffer(int width, int height, unsigned int colorBufferCount = 1, BufferConfigFlag bufferConfigFlags = BufferConfigFlag::NONE);
-    Framebuffer(const Framebuffer &) = delete;
-    Framebuffer(const Framebuffer &&) = delete;
-    Framebuffer &operator=(const Framebuffer &) = delete;
 
     /**
      * @brief Destructor deletes the framebuffer object along with any texture and renderbuffer
@@ -55,6 +52,9 @@ namespace xrs
     inline int GetHeight() const { return m_Height; }
 
   private:
+    Framebuffer(const Framebuffer &) = delete;
+    Framebuffer(const Framebuffer &&) = delete;
+    Framebuffer &operator=(const Framebuffer &) = delete;
     void Configure();
     const size_t m_ColorBufferCount;
     const BufferConfigFlag m_BufferConfigFlags;

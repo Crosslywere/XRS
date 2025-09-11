@@ -11,8 +11,6 @@ namespace xrs
 
   class Texture
   {
-    friend class Renderer;
-
   public:
     /**
      * @brief Creates an empty texture based on specified parameters
@@ -22,9 +20,11 @@ namespace xrs
      * @param format the texture's data format. Defaults to GL_RGB
      * @returns The GPU texture object
      */
-    static unsigned int CreateTexture(int width, int height, GLenum target = GL_TEXTURE_2D, GLenum format = GL_RGB, GLenum datatype = GL_UNSIGNED_BYTE);
+    static unsigned int CreateTexture2D(int width, int height, int internalFormat = GL_RGBA8, unsigned int format = GL_RGBA, unsigned int datatype = GL_UNSIGNED_BYTE);
+
     /**
      * @brief Constructor that uploads the specified by the path to the GPU
+     * @param pathToFile the path to the texture file from workspace directory
      */
     Texture(const std::string &pathToFile);
     ~Texture();

@@ -33,21 +33,21 @@ namespace xrs
     /**
      * @brief Prepares the renderer for drawing objects.
      */
-    void Begin() const;
+    void BeginFrame() const;
 
     /**
      * @brief Ends the rendering phase.
      */
-    void End() const;
+    void EndFrame() const;
 
     // Explicit declarations
     Renderer(const Renderer &) = default;
-    Renderer(const Renderer &&) = delete;
     ~Renderer() = default;
     Renderer &operator=(const Renderer &) = default;
 
   private:
-    Renderer() = default;
+    Renderer(const Renderer &&) = delete;
+    // Renderer() = default;
     Renderer(bool, const GLLoaderFunc &);
   };
 

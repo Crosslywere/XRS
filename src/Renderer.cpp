@@ -5,6 +5,7 @@
 
 namespace xrs
 {
+  static Framebuffer *g_Framebuffer = nullptr;
 
   Renderer &Renderer::Initialize(bool loadGL, const GLLoaderFunc &loader)
   {
@@ -14,17 +15,25 @@ namespace xrs
 
   void Renderer::Shutdown()
   {
+    delete g_Framebuffer;
   }
 
-  void Renderer::Begin() const
+  void Renderer::BeginFrame() const
   {
-    // TODO Bind framebuffer if one is available
-    glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    if (g_Framebuffer)
+    {
+      g_Framebuffer->Bind();
+      if (g_Framebuffer->RequiresConfig(BufferConfigFlag::DEPTH_RENDER_BUFFER | BufferConfigFlag::DEPTH_TEXTURE_3D_BUFFER | BufferConfigFlag::DEPTH_TEXTURE_BUFFER))
+        glEnable(GL_DEPTH_TEST);
+    }
+    glClear(GL_COLOR_BUFFER_BIT);
   }
 
-  void Renderer::End() const
+  void Renderer::EndFrame() const
   {
-    // TODO Unbind framebuffer if one was bound
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDisable(GL_DEPTH_TEST);
+    glClear(GL_COLOR_BUFFER_BIT);
   }
 
   Renderer::Renderer(bool loadGL, const GLLoaderFunc &loader)
@@ -34,6 +43,9 @@ namespace xrs
       int success = loader ? gladLoadGLLoader(loader) : gladLoadGL();
       assert(success && "Failed to load OpenGL functions!");
       std::printf("Loaded OpenGL Version :: %s\n", glGetString(GL_VERSION));
+      int viewport[4];
+      glGetIntegerv(GL_VIEWPORT, viewport);
+      g_Framebuffer = new Framebuffer(viewport[2], viewport[3], 1, BufferConfigFlag::DEPTH_RENDER_BUFFER);
     }
   }
 
