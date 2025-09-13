@@ -14,6 +14,7 @@ target_include_directories(xrs PRIVATE
     include
     deps/glad/include
     deps/stb
+    deps/glm
 )
 
 #GLFW subdirectory
