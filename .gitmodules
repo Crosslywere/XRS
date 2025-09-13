@@ -1,3 +1,6 @@
 [submodule "test/vendor/glfw"]
 	path = test/vendor/glfw
 	url = https://github.com/glfw/glfw
+[submodule "deps/glm"]
+	path = deps/glm
+	url = https://github.com/icaven/glm
