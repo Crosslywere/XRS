@@ -6,7 +6,7 @@
 namespace xrs
 {
 
-  unsigned int Texture::CreateTexture2D(int width, int height, int internalFormat, unsigned int format, unsigned int datatype)
+  unsigned int Texture::CreateEmptyTexture2D(int width, int height, int internalFormat, unsigned int format, unsigned int datatype)
   {
     unsigned texture;
     glGenTextures(1, &texture);

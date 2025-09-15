@@ -29,6 +29,7 @@ namespace xrs
     friend class Renderer;
 
   public:
+    Framebuffer() = default;
     /**
      * @brief Constructor that creates a framebuffer based on the specifications made
      * @param width the target width
@@ -52,12 +53,9 @@ namespace xrs
     inline int GetHeight() const { return m_Height; }
 
   private:
-    Framebuffer(const Framebuffer &) = delete;
-    Framebuffer(const Framebuffer &&) = delete;
-    Framebuffer &operator=(const Framebuffer &) = delete;
     void Configure();
-    const size_t m_ColorBufferCount;
-    const BufferConfigFlag m_BufferConfigFlags;
+    const size_t m_ColorBufferCount{};
+    const BufferConfigFlag m_BufferConfigFlags{};
     int m_Width{}, m_Height{};
     unsigned m_FramebufferObject{};
     std::vector<unsigned> m_RenderTextures;

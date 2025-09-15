@@ -57,7 +57,7 @@ namespace xrs
     assert(m_ColorBufferCount || m_BufferConfigFlags != BufferConfigFlag::NONE && "Failed to configure framebuffer!");
     for (size_t i = 0; i < m_ColorBufferCount; i++)
     {
-      auto texture = Texture::CreateTexture2D(m_Width, m_Height);
+      auto texture = Texture::CreateEmptyTexture2D(m_Width, m_Height);
       glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, texture, 0);
       m_RenderTextures.push_back(texture);
     }
@@ -65,7 +65,7 @@ namespace xrs
     {
       if (RequiresConfig(BufferConfigFlag::DEPTH_TEXTURE_BUFFER))
       {
-        auto texture = Texture::CreateTexture2D(m_Width, m_Height, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_FLOAT);
+        auto texture = Texture::CreateEmptyTexture2D(m_Width, m_Height, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_FLOAT);
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + m_RenderTextures.size(), GL_TEXTURE_2D, texture, 0);
         m_RenderTextures.push_back(texture);
       }

@@ -20,12 +20,13 @@ namespace xrs
      * @param format the texture's data format. Defaults to GL_RGB
      * @returns The GPU texture object
      */
-    static unsigned int CreateTexture2D(int width, int height, int internalFormat = GL_RGBA8, unsigned int format = GL_RGBA, unsigned int datatype = GL_UNSIGNED_BYTE);
+    static unsigned int CreateEmptyTexture2D(int width, int height, int internalFormat = GL_RGBA8, unsigned int format = GL_RGBA, unsigned int datatype = GL_UNSIGNED_BYTE);
 
     /**
      * @brief Constructor that uploads the specified by the path to the GPU
      * @param pathToFile the path to the texture file from workspace directory
      */
+    Texture() = default;
     Texture(const std::string &pathToFile);
     ~Texture();
     inline int GetWidth() const { return m_Width; }
@@ -33,10 +34,7 @@ namespace xrs
     void Bind(unsigned int index) const;
 
   private:
-    Texture(const Texture &) = delete;
-    Texture(const Texture &&) = delete;
-    Texture &operator=(const Texture &) = delete;
-    const GLenum m_Target;
+    const GLenum m_Target{};
     int m_Width{}, m_Height{};
     unsigned m_TextureObject{};
   };
