@@ -8,7 +8,7 @@
 namespace xrs
 {
 
-  enum class BufferConfigFlag
+  enum BufferConfigFlag
   {
     NONE                        = 0,
     DEPTH_TEXTURE_BUFFER        = 0x01,

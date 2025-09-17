@@ -23,10 +23,10 @@ namespace xrs
     if (g_Framebuffer)
     {
       g_Framebuffer->Bind();
-      if (g_Framebuffer->RequiresConfig(BufferConfigFlag::DEPTH_RENDER_BUFFER | BufferConfigFlag::DEPTH_TEXTURE_3D_BUFFER | BufferConfigFlag::DEPTH_TEXTURE_BUFFER))
+      if (g_Framebuffer->RequiresConfig(DEPTH_RENDER_BUFFER | DEPTH_TEXTURE_3D_BUFFER | DEPTH_TEXTURE_BUFFER))
         glEnable(GL_DEPTH_TEST);
     }
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
   }
 
   void Renderer::EndFrame() const
