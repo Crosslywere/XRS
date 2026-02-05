@@ -6,6 +6,9 @@ add_library(xrs STATIC
     src/Renderer.cpp
     src/Framebuffer.cpp
     src/Texture.cpp
+    src/Transform.cpp
+    src/Shader.cpp
+    src/Mesh.cpp
     deps/glad/src/glad.c
     deps/stb/stb_impl.cpp
 )
@@ -16,6 +19,8 @@ target_include_directories(xrs PRIVATE
     deps/stb
     deps/glm
 )
+
+#Testing code added to make sure nothing breaks like includes
 
 #GLFW subdirectory
 add_subdirectory(test/vendor/glfw)

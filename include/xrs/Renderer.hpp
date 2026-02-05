@@ -5,6 +5,7 @@
 
 #include "Framebuffer.hpp"
 #include "Texture.hpp"
+#include "Mesh.hpp"
 
 namespace xrs
 {
